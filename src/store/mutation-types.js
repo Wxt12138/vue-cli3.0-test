@@ -1,0 +1,4 @@
+export const CHANGELOGIN = 'CHANGELOGIN'
+export const ADDGOODNUM = 'ADDGOODNUM'
+export const DELGOODNUM = 'DELGOODNUM'
+export const ADDGOODLIST = 'ADDGOODLIST'

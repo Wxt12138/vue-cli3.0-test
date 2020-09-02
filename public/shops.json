@@ -1,0 +1,107 @@
+{
+    "commodity": [{
+            "shop_name": "苹果",
+            "shop_img": "image/animal/Apple.png",
+            "shop_price": 400,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "0",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "枫叶",
+            "shop_img": "image/animal/AutumnLeaf.png",
+            "shop_price": 400,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "1",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "竹笋灯",
+            "shop_img": "image/animal/BambooShoot.png",
+            "shop_price": 1200,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "3",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "樱桃",
+            "shop_img": "image/animal/Cherry.png",
+            "shop_price": 400,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "4",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "梨",
+            "shop_img": "image/animal/Coconut.png",
+            "shop_price": 400,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "5",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "栗子",
+            "shop_img": "image/animal/DIYAcorn.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "6",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "竹子",
+            "shop_img": "image/animal/DIYBamboo.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "7",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "竹笋",
+            "shop_img": "image/animal/DIYBambooSpring.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "8",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "树枝",
+            "shop_img": "image/animal/DIYBranch.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "9",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "粘土",
+            "shop_img": "image/animal/DIYClay.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "10",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "金矿",
+            "shop_img": "image/animal/DIYGold.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "11",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "铁矿",
+            "shop_img": "image/animal/DIYIron.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "12",
+            "shop_num": 0
+        },
+        {
+            "shop_name": "松果",
+            "shop_img": "image/animal/DIYPinecone.png",
+            "shop_price": 50,
+            "shop_int": "这是一个神奇的物品，它的作用是用来没啥作用",
+            "shop_id": "13",
+            "shop_num": 0
+        }
+    ]
+}
