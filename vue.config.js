@@ -27,6 +27,14 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-        proxy: null, //设置跨域，即将本文件内任何没有匹配到的静态文件，都指向跨域地址
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000/api',
+                changePrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            },
+        }, //设置跨域，即将本文件内任何没有匹配到的静态文件，都指向跨域地址
     },
 }
