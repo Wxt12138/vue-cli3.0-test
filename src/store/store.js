@@ -9,6 +9,7 @@ const state = {
     islogin: false,
     goodsNum: 0,
     goodsList: [],
+    token: ''
 }
 
 export default new Vuex.Store({

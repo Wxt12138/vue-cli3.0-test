@@ -4,18 +4,23 @@ import {
     ADDGOODLIST,
     DELGOODNUM,
 } from '@/store/mutation-types'
-import { setStore } from '@/mutils/mutils'
+import {
+    setStore
+} from '@/mutils/mutils'
 
 export default {
     [CHANGELOGIN](state) {
-        state.islogin = true
+        state.islogin = !state.islogin
         setStore('login', state.islogin)
     },
     [ADDGOODNUM](state) {
-        state.goodsNum++
-            setStore('goodsNum', state.goodsNum)
+        state.goodsNum++;
+        setStore('goodsNum', state.goodsNum)
     },
-    [ADDGOODLIST](state, { id, data }) {
+    [ADDGOODLIST](state, {
+        id,
+        data
+    }) {
         console.log(state.goodsList[0], 55)
         if (state.goodsList.length > 0) {
             state.goodsList.forEach((item, index) => {

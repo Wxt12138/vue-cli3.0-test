@@ -31,13 +31,7 @@ export default {
         this.shopsList = res.data.commodity
       })
   },
-  mounted() {
-    this.$axios
-      .post('/api/register', { name: '12356', password: '789466' })
-      .then((res) => {
-        console.log(res)
-      })
-  },
+  mounted() {},
   methods: {
     searchVal(data) {
       Toast('子组件传来的：' + data)
