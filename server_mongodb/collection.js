@@ -1,5 +1,6 @@
 const collectionNmae = {
-    useinfo: "useinfo"
+    useinfo: "useinfo",
+    goodsList: "goodsList"
 };
 
 module.exports = collectionNmae

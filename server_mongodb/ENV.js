@@ -1,0 +1,2 @@
+const SECRET = 'Q12W3E4R5T6Y7U8I9O0P'
+module.exports = SECRET

@@ -5,6 +5,8 @@ import login from '../view/login/login'
 import search from '../view/search/search'
 import car from '../view/car/car'
 import shops from '../view/shops/shops'
+import register from "../view/register/register"
+import detail from "../view/detail/detail"
 import VueRouter from 'vue-router'
 
 const originalPush = VueRouter.prototype.push
@@ -54,6 +56,19 @@ const routes = [{
         path: '/login',
         component: login,
         name: 'login',
+    },
+    {
+        path: '/register',
+        component: register,
+        name: 'register',
+    },
+    {
+        path: '/detail',
+        component: detail,
+        name: 'detail',
+        meta: {
+            requireAuth: true,
+        },
     },
 ]
 

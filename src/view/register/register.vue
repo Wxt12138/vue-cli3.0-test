@@ -13,15 +13,13 @@
         />
         <div style="margin: 16px;">
           <van-button round block type="info" native-type="submit">
-            登录
+            注册
           </van-button>
         </div>
       </van-form>
       <div class="tips">
-        如没有账号，请<router-link
-          style="color:blue;"
-          :to="{ path: '/register' }"
-          >注册</router-link
+        已有账号，去<router-link style="color:blue;" :to="{ path: '/login' }"
+          >登录</router-link
         >
       </div>
     </div>
@@ -32,7 +30,7 @@
 <script>
 import { Form, Field, Toast, Button } from 'vant'
 import { mapMutations } from 'vuex'
-import { setStore } from '@/mutils/mutils'
+// import { getStore } from '@/mutils/mutils'
 export default {
   data() {
     return {
@@ -49,7 +47,7 @@ export default {
     [Button.name]: Button,
   },
   methods: {
-    ...mapMutations(['CHANGELOGIN', 'CHANGETOKEN']),
+    ...mapMutations(['CHANGELOGIN']),
     // 校验函数返回 true 表示校验通过，false 表示不通过
     validator(val) {
       return /1\d{10}/.test(val)
@@ -69,7 +67,6 @@ export default {
       console.log('failed', errorInfo)
     },
     async onsubmit(values) {
-      this.click = true
       if (!values.usename) {
         Toast('请填写用户名')
         this.click = false
@@ -80,24 +77,16 @@ export default {
         this.click = false
         return
       }
-      let res = await this.$api.login({
+      let res = await this.$api.register({
         name: values.usename,
         password: values.psd,
       })
       if (res.status == 200) {
-        console.log(res)
-        if (res.data.code == 200) {
-          setStore('token', res.data.token)
-          this.CHANGELOGIN()
-          this.CHANGETOKEN()
-          console.log(this.$route.query.redirect)
-          if (this.$route.query.redirect) {
-            console.log(122)
-            let redirect_path = this.$route.query.redirect
-            this.$router.push({ path: redirect_path })
-          } else {
-            this.$router.push({ path: '/index' })
-          }
+        if (res.data.code == 100010) {
+          Toast(res.data.message)
+        } else {
+          Toast('注册成功')
+          this.$router.push({ path: '/login' })
         }
       } else {
         this.click = false
@@ -128,6 +117,5 @@ export default {
 }
 .tips {
   text-align: center;
-  color: black;
 }
 </style>

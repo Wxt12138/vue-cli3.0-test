@@ -3,9 +3,11 @@ import {
     ADDGOODNUM,
     ADDGOODLIST,
     DELGOODNUM,
+    CHANGETOKEN,
 } from '@/store/mutation-types'
 import {
-    setStore
+    setStore,
+    getStore
 } from '@/mutils/mutils'
 
 export default {
@@ -14,8 +16,8 @@ export default {
         setStore('login', state.islogin)
     },
     [ADDGOODNUM](state) {
-        state.goodsNum++;
-        setStore('goodsNum', state.goodsNum)
+        state.goodsNum++
+            setStore('goodsNum', state.goodsNum)
     },
     [ADDGOODLIST](state, {
         id,
@@ -38,5 +40,9 @@ export default {
     },
     [DELGOODNUM](state) {
         setStore('goodsNum', state.goodsNum--)
+    },
+    [CHANGETOKEN](state) {
+        console.log(55, getStore('token'))
+        state.token = getStore('token')
     },
 }

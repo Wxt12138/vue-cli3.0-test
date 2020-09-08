@@ -3,14 +3,15 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router/router'
 import store from './store/store'
-import axios from 'axios'
+// import axios from 'axios'
 import {
     getStore
 } from './mutils/mutils'
+import api from '@/request/api'
 // import { nextTick } from 'vue/types/umd'
 
 // Vue.config.productionTip = false
-Vue.prototype.$axios = axios
+Vue.prototype.$api = api
     // Vue.prototype.getStore = getStore
 Vue.use(VueRouter)
 

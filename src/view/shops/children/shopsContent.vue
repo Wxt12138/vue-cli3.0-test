@@ -17,23 +17,21 @@
           span="12"
           v-for="(item, index) in shopsList"
           :key="'shops' + index"
+          @click="toDetail(item.shop_name)"
         >
           <div class="s_son">
             <div class="s_l">
               <img :src="`${item.shop_img}`" alt="" />
             </div>
             <div class="s_r">
-              <div class="title">{{ item.shop_name }}</div>
-              <div>{{ item.shop_int }}</div>
+              <div class="int">{{ item.shop_int }}</div>
               <div class="price">
-                <span
-                  ><font class="p_l" color="red">￥</font
-                  >{{ item.shop_price }}</span
-                >
+                <span>
+                  <font class="p_l" color="red">￥</font>{{ item.shop_price }}
+                </span>
                 <van-icon
                   name="shopping-cart-o"
                   color="red"
-                  :info="0"
                   @click="addOne(item.shop_id, index)"
                 />
               </div>
@@ -96,6 +94,12 @@ export default {
       console.log(obj, 78)
       this.ADDGOODLIST({ id: id, data: obj })
     },
+    toDetail(name) {
+      this.$router.push({
+        path: '/details',
+        query: { name: name },
+      })
+    },
   },
 }
 </script>
@@ -115,9 +119,12 @@ $tc: center;
 .s_son {
   background: #fff;
   margin-bottom: 10px;
-  padding: 10px;
+
   .s_l {
     text-align: $tc;
+  }
+  .s_r {
+    padding: 10px;
   }
 }
 .title {
@@ -127,10 +134,17 @@ $tc: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
+  margin-top: 5px;
 }
 .p_l {
   color: red;
   font-size: 16px;
+}
+.int {
+  font-size: 12px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 </style>

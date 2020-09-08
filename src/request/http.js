@@ -1,66 +1,113 @@
 import axios from 'axios'
-import QS from 'qs'
+import router from '../router/router'
+import store from '../store/store'
 import {
     Toast
 } from 'vant'
-import store from '@/store/store'
-import {
-    response,
-    Router
-} from 'express'
 
-if (process.env.NODE_EVN == 'deveploment') {
-    axios.defaults.baseURL = '/api'
-} else if (process.env.NODE_EVN == 'production') {}
+// 提示函数
+// 禁止点击蒙层，显示一秒后关闭
 
-axios.defaults.timeout = 10000;
-axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+const tip = (msg) => {
+    Toast({
+        message: msg,
+        duration: 1000,
+        forbidClick: true,
+    })
+}
+
+const loding = () =>
+    Toast.loading({
+        forbidClick: true,
+        loadingType: 'spinner',
+    })
+
+/*
+  跳转登录页
+  携带当前的页面路由，完成后返回当前页
+*/
+
+const toLogin = () => {
+    router.replace({
+        path: '/login',
+        query: {
+            redirect: router.currentRoute.fullpath,
+        },
+    })
+}
+
+// 请求失败后错误统一处理
+
+const errorHandle = (status, other) => {
+    switch (status) {
+        case 401:
+            toLogin()
+            break
+        case 403:
+            tip('登录过期，请重新登录')
+            localStorage.removeItem('token')
+            store.commit('islogin', false)
+            setTimeout(() => {
+                toLogin()
+            }, 1000)
+            break
+        case 404:
+            tip('请求的资源不存在')
+            break
+        case 422:
+            tip('密码错误')
+            break;
+        default:
+            console.log(other)
+            tip('发生错误')
+            break
+    }
+}
+
+// 创建axios实例
+var instance = axios.create({
+        timeout: 1000 * 12,
+    })
+    // 设置post请求头
+instance.defaults.headers.post['Content-Type'] =
+    'application/x-www-form-urlencoded'
 
 // 请求拦截
-
-axios.interceptors.request.use(
-    config => {
-        const token = store.state.token;
-        token && (config.headers.Authorization = token);
+instance.interceptors.request.use(
+    (config) => {
+        loding()
+        const token = store.state.token
+        token && (config.headers.Authorization = token)
         return config
     },
-    error => {
-        return Promise.error(error);
+    (error) => {
+        Toast.clear()
+        Promise.error(error)
     }
 )
 
 // 响应拦截
-axios.interceptors.response.use(
-    response => {
-        if (response.status === 200) {
-            return Promise.resolve(response);
-        } else {
-            return Promise.reject(response);
-        }
+instance.interceptors.response.use(
+    (res) => {
+        Toast.clear()
+        return res.status === 200 ? Promise.resolve(res) : Promise.reject(res)
     },
-    error => {
-        if (error.response.status) {
-            switch (error.response.status) {
-                // 未登录
-                case 401:
-                    Router.replace({
-                        path: '/login',
-                        query: {
-                            redirect: router.currentRoute.fullPath
-                        }
-                    })
-                    break;
-                case 403:
-                    Toast({
-                            message: '登录过期，请重新登录',
-                            duration: 1000,
-                            forbidClick: true
-                        })
-                        // 清楚token
-                    localStorage.removeItem('token');
-                    store.commit('islogin', false)
-
-            }
+    (error) => {
+        Toast.clear()
+        const {
+            response
+        } = error
+        if (response) {
+            errorHandle(response.status, response.data.message)
+            return Promise.reject(response)
+        } else {
+            // if (!window.navigator.onLine) {
+            //     store.commit("changeNetwork", false);
+            // } else {
+            return Promise.reject(error)
+                // }
         }
     }
 )
+
+export default instance

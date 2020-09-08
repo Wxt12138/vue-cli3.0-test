@@ -10,7 +10,7 @@ import shopsHead from './children/shopsHead'
 import shopsContent from './children/shopsContent'
 import { Toast } from 'vant'
 export default {
-  data() {
+  data () {
     return {
       shopsList: '',
     }
@@ -20,20 +20,21 @@ export default {
     shopsContent,
     [Toast.name]: Toast,
   },
-  created() {
-    this.$axios
-      .get('/shops.json', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+  created () {
+    this.$api.goodsList()
       .then((res) => {
-        this.shopsList = res.data.commodity
+        if (res.data.code == 200) {
+          if (res.data.list != 0) {
+            this.shopsList = res.data.list
+          }
+        } else {
+          Toast('请求错误')
+        }
       })
   },
-  mounted() {},
+  mounted () { },
   methods: {
-    searchVal(data) {
+    searchVal (data) {
       Toast('子组件传来的：' + data)
       this.vv = data
     },
