@@ -92,8 +92,9 @@ export default {
           this.CHANGETOKEN()
           console.log(this.$route.query.redirect)
           if (this.$route.query.redirect) {
-            console.log(122)
             let redirect_path = this.$route.query.redirect
+            console.log(this.$route.query.redirect)
+            console.log(76,this.$router)
             this.$router.push({ path: redirect_path })
           } else {
             this.$router.push({ path: '/index' })

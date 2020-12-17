@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 
-var shops = require('./public/shops') //本地json文件数据
+// var shops = require('./public/shops') //本地json文件数据
 
-var apiRoutes = express.Router()
-app.use('/api', apiRoutes)
+// var apiRoutes = express.Router()
+// app.use('/api', apiRoutes)
 
 module.exports = {
     devServer: {

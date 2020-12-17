@@ -16,8 +16,8 @@ export default {
         setStore('login', state.islogin)
     },
     [ADDGOODNUM](state) {
-        state.goodsNum++
-            setStore('goodsNum', state.goodsNum)
+        state.goodsNum++;
+        setStore('goodsNum', state.goodsNum)
     },
     [ADDGOODLIST](state, {
         id,

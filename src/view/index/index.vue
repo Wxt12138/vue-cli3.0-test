@@ -1,6 +1,9 @@
 <template>
   <div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
     <van-tabbar route>
       <van-tabbar-item replace to="/shops" icon="home-o" name="shops">
         首页
@@ -43,6 +46,7 @@ export default {
       txt: '这是index文件',
     }
   },
+  mounted() {},
   computed: {
     ...mapState(['goodsNum']),
   },

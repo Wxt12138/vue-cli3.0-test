@@ -21,6 +21,11 @@ const api = {
     // 获取首页商品列表
     goodsList() {
         return axios.get(`${URL}/goodsList`)
+    },
+    // 获取商品详情
+    goodsDetail(params) {
+      return axios.get(`${URL}/goodsDetail`, {"params":params});
+        
     }
 }
 

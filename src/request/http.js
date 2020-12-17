@@ -1,17 +1,28 @@
+// import Vue from 'vue'
 import axios from 'axios'
-import router from '../router/router'
+
+import routes from '../router/router'
+// import VueRouter from 'vue-router'
 import store from '../store/store'
 import {
     Toast
 } from 'vant'
 
+
 // 提示函数
 // 禁止点击蒙层，显示一秒后关闭
 
+const Router = routes;
+
+// const router = new VueRouter({
+//     routes,
+// })
+
+// Vue.use(VueRouter)
 const tip = (msg) => {
     Toast({
         message: msg,
-        duration: 1000,
+        duration: 2000,
         forbidClick: true,
     })
 }
@@ -28,11 +39,9 @@ const loding = () =>
 */
 
 const toLogin = () => {
-    router.replace({
+  Router.replace({
         path: '/login',
-        query: {
-            redirect: router.currentRoute.fullpath,
-        },
+     
     })
 }
 
@@ -46,7 +55,7 @@ const errorHandle = (status, other) => {
         case 403:
             tip('登录过期，请重新登录')
             localStorage.removeItem('token')
-            store.commit('islogin', false)
+                // store.commit('islogin', false)
             setTimeout(() => {
                 toLogin()
             }, 1000)

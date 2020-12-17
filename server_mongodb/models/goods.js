@@ -22,6 +22,15 @@ const schema = new mongoose.Schema({
     },
     shop_dec: {
         type: String
+    },
+    send_way: {
+      type: String
+  },
+    month_num: {
+      type: Number
+  },
+    send_price:{
+      type: String
     }
 })
 

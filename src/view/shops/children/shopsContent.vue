@@ -78,14 +78,15 @@ export default {
     onLoad() {
       // 异步更新数据
       // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-      setTimeout(() => {
-        // 加载状态结束
-        this.loading = false
-        // 数据全部加载完成
-        if (this.shopsList.length >= 10) {
-          this.finished = true
-        }
-      }, 2000)
+      // setTimeout(() => {
+      //   // 加载状态结束
+      //   this.loading = false
+      //   // 数据全部加载完成
+      //   if (this.shopsList.length >= 10) {
+      //     this.finished = true
+      //   }
+      // }, 2000)
+      console.log(99, this.shopsList)
     },
     addOne(id, index) {
       console.log(id)
@@ -96,7 +97,7 @@ export default {
     },
     toDetail(name) {
       this.$router.push({
-        path: '/details',
+        path: '/detail',
         query: { name: name },
       })
     },

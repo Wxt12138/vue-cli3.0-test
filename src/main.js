@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router'
-import routes from './router/router'
+// import VueRouter from 'vue-router'
+import router from './router/router'
 import store from './store/store'
 // import axios from 'axios'
 import {
@@ -13,17 +13,18 @@ import api from '@/request/api'
 // Vue.config.productionTip = false
 Vue.prototype.$api = api
     // Vue.prototype.getStore = getStore
-Vue.use(VueRouter)
+// Vue.use(VueRouter)
 
-const router = new VueRouter({
-    routes,
-})
+// const router = new VueRouter({
+//     mode: 'history',
+//     routes,
+// })
+
 
 router.beforeEach((to, from, next) => {
-    let login = getStore('login')
-    console.log(to.fullPath)
+    let token = getStore('token')
     if (to.matched.some((res) => res.meta.requireAuth)) {
-        if (login) {
+        if (token) {
             next()
             console.log(1)
         } else {
