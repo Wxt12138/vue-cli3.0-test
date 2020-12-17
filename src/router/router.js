@@ -88,6 +88,7 @@ const routes = new VueRouter({
       ]
 })
 
+
 Vue.use(VueRouter)
 
 export default routes
