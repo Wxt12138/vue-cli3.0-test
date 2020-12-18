@@ -4,6 +4,8 @@ import qs from 'qs'
 
 
 if (process.env.NODE_ENV == 'development') {
+ 
+    //var URL = 'http://localhost:3000/api'; // 跨域请求可以在这设置
     var URL = '/api';
 } else if (process.env.NODE_ENV == 'production') {
     console.log('生产环境');
