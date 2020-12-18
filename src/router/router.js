@@ -1,14 +1,9 @@
 // import App from './App'
 import Vue from 'vue'
-import index from '../view/index/index'
-import home from '../view/home/home'
-import login from '../view/login/login'
-import search from '../view/search/search'
-import car from '../view/car/car'
-import shops from '../view/shops/shops'
-import register from "../view/register/register"
-import detail from "../view/detail/detail"
 import VueRouter from 'vue-router'
+const shops = () => import('../view/shops/shops')
+const register = () => import('../view/register/register')
+const detail = () => import('../view/detail/detail')
 
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location, onResolve, onReject) {
@@ -16,7 +11,7 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
         return originalPush.call(this, location, onResolve, onReject)
     return originalPush.call(this, location).catch((err) => err)
 }
-
+// 路由加载resolve =>require(['../view/index/index'],resolve)
 const routes = new VueRouter({
   mode: 'history',     
   routes:[{
@@ -28,7 +23,7 @@ const routes = new VueRouter({
       },
       {
           path: '/index',
-          component: index,
+          component: resolve =>require(['../view/index/index'],resolve),
           name: 'index',
           redirect: '/shops',
           meta: {
@@ -37,7 +32,7 @@ const routes = new VueRouter({
           children: [{
                   path: '/shops',
                   name: shops,
-                  component: shops,
+                  component: resolve =>require(['../view/shops/shops'],resolve),
                   meta: {
                       keepAlive: true
                   }
@@ -45,7 +40,7 @@ const routes = new VueRouter({
               {
                   path: '/car',
                   name: 'car',
-                  component: car,
+                  component: resolve =>require(['../view/car/car'],resolve),
                   meta: {
                       keepAlive: false
                   }
@@ -53,7 +48,7 @@ const routes = new VueRouter({
               {
                   path: '/search',
                   name: 'search',
-                  component: search,
+                  component: resolve =>require(['../view/search/search'],resolve),
                   meta: {
                       keepAlive: false
                   }
@@ -61,7 +56,7 @@ const routes = new VueRouter({
               {
                   path: '/home',
                   name: 'home',
-                  component: home,
+                  component: resolve =>require(['../view/home/home'],resolve),
                   meta: {
                       keepAlive: false
                   }
@@ -69,7 +64,7 @@ const routes = new VueRouter({
           ],
       }, {
           path: '/login',
-          component: login,
+          component: resolve =>require(['../view/login/login'],resolve),
           name: 'login',
       },
       {
@@ -87,7 +82,6 @@ const routes = new VueRouter({
       },
       ]
 })
-
 
 Vue.use(VueRouter)
 

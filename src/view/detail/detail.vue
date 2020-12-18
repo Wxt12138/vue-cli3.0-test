@@ -33,9 +33,10 @@
     </van-row>
     <div class="bottom">
       <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服" @click="onClickIcon" />
-      <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
-      <van-goods-action-icon icon="shop-o" text="店铺" @click="onClickIcon" />
+      <van-goods-action-icon icon="chat-o" text="客服" @click="onClickKefu" />
+      <van-goods-action-icon icon="shop-o" text="店铺" @click="onClickDianpu" />
+      <van-goods-action-icon :icon="[isShoucang?'star':'star-o']" text="已收藏" @click="onClickShoucang" :color="[isShoucang?'#ff5000':'']" />
+      <van-goods-action-button type="warning" text="加入购物车" />
       <van-goods-action-button
         type="danger"
         text="立即购买"
@@ -49,12 +50,15 @@
 <script>
 import { Col, Row, GoodsAction, GoodsActionIcon, GoodsActionButton ,Cell } from 'vant';
 import {getName} from '@/mutils/mutils'
+import mixin from '@/mixin'
 export default {
   data() {
     return {
-      details:''
+     details:'',
+     isShoucang:false
     }
   },
+  mixins:[mixin],
   created(){
     let name = getName('name');
     console.log(name)
@@ -76,12 +80,25 @@ export default {
     [GoodsActionButton.name]:GoodsActionButton,
   },
   methods:{
-
+    onClickKefu(){
+      this.tips("哪来的什么客服啊")
+    },
+    onClickDianpu(){
+      this.tips("同样也没有什么店铺")
+    },
+    onClickShoucang(){
+      console.log(this.data)
+      this.isShoucang = !this.isShoucang
+    },
+    onClickButton(){
+       this.tips("买不来了，加入购物车吧")
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
+$shoucang:#ff5000;
  .tr{
       text-align: right;
     }
@@ -148,5 +165,8 @@ export default {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.active.shoucang{
+  color:$shoucang;
 }
 </style>

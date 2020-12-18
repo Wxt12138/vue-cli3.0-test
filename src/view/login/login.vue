@@ -33,6 +33,7 @@
 import { Form, Field, Toast, Button } from 'vant'
 import { mapMutations } from 'vuex'
 import { setStore } from '@/mutils/mutils'
+import mixin from '@/mixin'
 export default {
   data() {
     return {
@@ -41,6 +42,7 @@ export default {
       value3: '',
     }
   },
+  mixins:[mixin],
   created() {},
   components: {
     [Form.name]: Form,

@@ -11,7 +11,7 @@ class Jwt {
         let createDate = Math.floor(Date.now() / 1000)
         let token = jwt.sign({
                 data,
-                exp: createDate + 60 * 20,
+                exp: createDate + 60 * 10080,
             },
             serect
         )
