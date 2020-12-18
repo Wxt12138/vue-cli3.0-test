@@ -1,0 +1,22 @@
+{
+  "RECORDS": [
+    {
+      "_id": "5f51e715aab0282ab49d2625",
+      "__v": "0",
+      "name": "admin",
+      "password": "000000"
+    },
+    {
+      "_id": "5f54dd9ded165435e4fe2d6b",
+      "__v": "0",
+      "name": "username",
+      "password": "$2b$10$wwIICgVoTvv0s16btV1qdeAEC9Gh/4/Mf1fA.pWcfhyFxMxMIgWYa"
+    },
+    {
+      "_id": "5f54ec45b84de62588182020",
+      "__v": "0",
+      "name": "adminadmin",
+      "password": "$2b$10$tyt.27rtF0dK.A.e12qv3ePmk4zCq08APfuXvvYTWYXRgZUfoFS7."
+    }
+  ]
+}
