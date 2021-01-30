@@ -35,8 +35,8 @@
       <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" @click="onClickKefu" />
       <van-goods-action-icon icon="shop-o" text="店铺" @click="onClickDianpu" />
-      <van-goods-action-icon :icon="[isShoucang?'star':'star-o']" text="已收藏" @click="onClickShoucang" :color="[isShoucang?'#ff5000':'']" />
-      <van-goods-action-button type="warning" text="加入购物车" />
+      <van-goods-action-icon :icon="isShoucang?'star':'star-o'" text="已收藏" @click="onClickShoucang" :color="isShoucang?'#ff5000':''" />
+      <van-goods-action-button type="warning" text="加入购物车" @click="onClickCar"/>
       <van-goods-action-button
         type="danger"
         text="立即购买"
@@ -50,6 +50,7 @@
 <script>
 import { Col, Row, GoodsAction, GoodsActionIcon, GoodsActionButton ,Cell } from 'vant';
 import {getName} from '@/mutils/mutils'
+import { mapActions } from 'vuex'
 import mixin from '@/mixin'
 export default {
   data() {
@@ -80,6 +81,7 @@ export default {
     [GoodsActionButton.name]:GoodsActionButton,
   },
   methods:{
+    ...mapActions(['addcar']),
     onClickKefu(){
       this.tips("哪来的什么客服啊")
     },
@@ -87,11 +89,16 @@ export default {
       this.tips("同样也没有什么店铺")
     },
     onClickShoucang(){
-      console.log(this.data)
       this.isShoucang = !this.isShoucang
     },
     onClickButton(){
        this.tips("买不来了，加入购物车吧")
+    },
+    // 加入购物车
+    onClickCar(){
+      let data = JSON.parse(JSON.stringify(this.$data.details))
+      this.addcar(data)
+      // this.ADDCAR(this.details)
     }
   }
 }

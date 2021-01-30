@@ -4,6 +4,7 @@ import {
     ADDGOODLIST,
     DELGOODNUM,
     CHANGETOKEN,
+    ADDCAR
 } from '@/store/mutation-types'
 import {
     setStore,
@@ -45,4 +46,8 @@ export default {
         console.log(55, getStore('token'))
         state.token = getStore('token')
     },
+    [ADDCAR](){
+      console.log('异步操作了action')
+      // state.carList =  [...state.carList,data]
+    }
 }

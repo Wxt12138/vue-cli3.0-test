@@ -8,7 +8,6 @@ module.exports = (app) => {
     router.post('/register', async(req, res) => {
         try {
             const model = await useinfo.create(req.body)
-            console.log(66, model)
             if (model) {
                 res.send({
                     code: 200,

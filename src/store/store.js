@@ -12,6 +12,7 @@ const state = {
     islogin: false,
     goodsNum: 0,
     goodsList: [],
+    carList:[],
     token: getStore('token') || ''
 }
 

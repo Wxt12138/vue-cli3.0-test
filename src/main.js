@@ -7,7 +7,7 @@ import store from './store/store'
 import {
     getStore
 } from './mutils/mutils'
-import api from '@/request/api'
+import api from '@/request/api/api'
 // import { nextTick } from 'vue/types/umd'
 
 // Vue.config.productionTip = false

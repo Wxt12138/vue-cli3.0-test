@@ -43,4 +43,4 @@ const schema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('goodsList', schema, collectionNmae.goodsList)
+module.exports = mongoose.model('carList', schema, collectionNmae.carList)

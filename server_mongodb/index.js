@@ -13,6 +13,7 @@ app.use(express.json())
 require('./routes')(app)
 require('./routes/goods')(app)
 require('./plugins/db')(app)
+require('./routes/carList')(app)
 
 app.listen(3000, () => {
     console.log('listen localhost:3000')

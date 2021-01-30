@@ -7,7 +7,6 @@ module.exports = (app) => {
     // 获取首页链接
     router.get('/goodsList', auth, async(req, res) => {
         try {
-            console.log(87, req.body)
             let goodsList = await goods.find()
             res.send({
                 code: 200,
@@ -46,6 +45,7 @@ module.exports = (app) => {
             })
         }
     })
+
 
     app.use('/api', router)
 }
